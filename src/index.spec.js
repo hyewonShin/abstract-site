@@ -19,6 +19,7 @@ describe('Site 요구사항 테스트', () => {
 
     test('하나의 Site에 동일한 이름의 Board를 추가할 수 없다.', () => {
         const mySite = new Site();
+        
         const noticeBoard1 = new Board('공지사항');
         const noticeBoard2 = new Board('공지사항');
 
@@ -74,6 +75,7 @@ describe('Board 요구사항 테스트', () => {
 
         mySite.addBoard(addedBoard);
 
+        //'Site 에 추가된 Board >> Article을 추가할 수 있다.
         expect(() => {
             const article = new Article({
                 subject: '글 제목',
@@ -83,6 +85,7 @@ describe('Board 요구사항 테스트', () => {
             addedBoard.publish(article);
         }).not.toThrow();
 
+        //'Site 에 추가안된 Board >> Article을 추가할 수 없다. 
         expect(() => {
             const article = new Article({
                 subject: '글 제목2',
